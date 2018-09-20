@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "goc_domains"
+version = "0.1.0"
+description = "Discover GoC domains"
+authors = ["David Buckley <buckley.w.david@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+scrapy = "^1.5"
+pylru = "^1.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^3.8"
