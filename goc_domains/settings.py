@@ -14,8 +14,13 @@ BOT_NAME = 'goc_domains'
 SPIDER_MODULES = ['goc_domains.spiders']
 NEWSPIDER_MODULE = 'goc_domains.spiders'
 
-# DUPEFILTER_CLASS = 'scrapy.dupefilters.RFPDupeFilter'
+LOG_FORMATTER = 'goc_domains.logger.PoliteLogFormatter'
 
+# Configure item pipelines
+# See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+ITEM_PIPELINES = {
+    'goc_domains.pipelines.DuplicatesPipeline': 300,
+}
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = 'goc_domains (+http://davidbuckley.ca)'
@@ -24,6 +29,8 @@ USER_AGENT = 'goc_domains (+http://davidbuckley.ca)'
 ROBOTSTXT_OBEY = True
 
 LOG_LEVEL = 'INFO'
+
+HTTPERROR_ALLOW_ALL = True
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -66,11 +73,6 @@ LOG_LEVEL = 'INFO'
 #    'scrapy.extensions.telnet.TelnetConsole': None,
 #}
 
-# Configure item pipelines
-# See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-    'goc_domains.pipelines.DuplicatesPipeline': 300,
-}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
